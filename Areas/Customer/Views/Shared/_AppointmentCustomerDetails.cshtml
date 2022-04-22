@@ -1,0 +1,67 @@
+﻿@model doan_webfix.Models.Appoinments
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<h2>Customer Information</h2>
+<div class="col-12" style="padding-left:30px;">
+    <div class="form-group row">
+        <div class="col-12">
+            <label><span class="text-danger">*</span>   Name : </label>
+        </div>
+        <div class="col-12">
+            <input asp-for="@Model.CustomerName" class="form-control" style="border:none" readonly/>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-12">
+            <label><span class="text-danger">*</span>  Address : </label>
+        </div>
+        <div class="col-12">
+            <input asp-for="@Model.CustomerAddress" class="form-control" style="border:none" readonly />
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-12">
+            <label><span class="text-danger">*</span>    Email : </label>
+        </div>
+        <div class="col-12">
+            <input asp-for="@Model.CustomerEmail" class="form-control" style="border:none" readonly/>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-12">
+            <label><span class="text-danger">*</span>   Phone : </label>
+        </div>
+        <div class="col-12">
+            <input asp-for="@Model.CustomerPhone" class="form-control" style="border:none" readonly/>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-12">
+            <label><span class="text-danger">*</span>   Appoinment Date : </label>
+        </div>
+        <div class="col-12">
+            <input asp-for="@Model.AppoinmentDate" value="@String.Format("{0:d}",DateTime.Now)" type="text" class="form-control" style="border:none" readonly />
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-12">
+            <label><span class="text-danger">*</span>   Appoinment Time : </label>
+        </div>
+        <div class="col-12">
+            <input asp-for="@Model.AppointmentTime" value="@String.Format("{0:t}",DateTime.Now)" type="text" class="form-control" style="border:none" readonly />
+        </div>
+
+    </div>
+</div>

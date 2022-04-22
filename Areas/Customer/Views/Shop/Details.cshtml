@@ -1,0 +1,151 @@
+﻿@model doan_webfix.Models.ViewModel.CartItem
+@using doan_webfix.Extensions
+@using Microsoft.AspNetCore.Http
+@using doan_webfix.Models.ViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Customer/Views/Shared/_LayoutHomePage.cshtml";
+}
+<br />
+<br />
+@inject IHttpContextAccessor HttpContextAccessor
+@section Slider{ }
+<form method="post">
+    <div class="site-wrap">
+
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0"><a asp-action="Index" asp-controller="HomePages" asp-area="Customer">Home</a> <span class="mx-2 mb-0">/</span> <a asp-action="Index" asp-controller="Shop" asp-area="Customer">Shop</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">@Model.itemCart.ProductName</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="item-entry">
+                            <a href="#" class="product-item md-height bg-gray d-block">
+                                <img src="@Model.itemCart.Image" alt="Image" class="img-fluid" style="max-width:50%;height:auto">
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="itemCart.ProductName">Name:</label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="itemCart.ProductName" class="text-black" />
+                            </div>
+                            <span asp-validation-for="itemCart.ProductName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="itemCart.Mota">Description:</label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="itemCart.Mota" class="text-black" />
+                            </div>
+                            <span asp-validation-for="itemCart.Mota" class="text-danger"></span>
+                        </div>
+
+                        @if (Model.itemCart.newPrice != 0)
+                        {
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="itemCart.newPrice">Price:</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="itemCart.newPrice" class="text-black" /><span class=" text-wrap">USD</span>
+                                </div>
+                                <span asp-validation-for="itemCart.newPrice" class="text-black"></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="itemCart.Price">Price</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="itemCart.Price" class="text-black" /><span class=" text-wrap">USD</span>
+                                </div>
+                                <span asp-validation-for="itemCart.Price" class="text-black"></span>
+                            </div>
+                        }
+
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="itemCart.ProductSize">Size:</label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="itemCart.ProductSize" class="text-black" />
+                            </div>
+                            <span asp-validation-for="itemCart.ProductSize" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <label asp-for="itemCart.ProductTypes">Types:</label>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="itemCart.ProductTypes.ProductTypeName" class="text-black" />
+                            </div>
+                            <span asp-validation-for="itemCart.ProductTypes.ProductTypeName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-5">
+                            <div class="input-group mb-3" style="max-width: 120px;">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                </div>
+                                <input asp-for="@Model.quantity" type="number" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                </div>
+                            </div>
+                            <span asp-validation-for="@Model.quantity" class="text-danger">Quatity:</span>
+
+                        </div>
+                        <input type="hidden" asp-for="itemCart.ProductId" class="form-control" />
+                        <div>
+                            @{
+                                bool isInBag = false;
+
+                                List<CartItem> lsCart = HttpContextAccessor.HttpContext.Session.Get<List<CartItem>>("ssShopingCart");
+
+
+                                if (lsCart != null && lsCart.Exists(x => x.itemCart.ProductId == Model.itemCart.ProductId))
+                                {
+                                    isInBag = true;
+                                }
+                                if (isInBag)
+                                {
+                                    <input type="submit" asp-action="Remove" asp-route-id="@Model.itemCart.ProductId" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" value="Remove From Cart" />
+                                }
+                                else
+                                {
+                                    <input type="submit" @Url.Action("Details", "Shop", new { id = Model.itemCart.ProductId, quantity = Model.quantity }) class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" value="Add To Cart" />
+                                }
+                            }
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

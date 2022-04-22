@@ -1,0 +1,33 @@
+﻿@model doan_webfix.Models.ProductType
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Details Product Type</h2>
+    </div>
+</div>
+<div class="p-4 border rounded row">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="ProductTypeName">Types</label>
+        </div>
+        <div class="col-8">
+            <input asp-for="ProductTypeName" readonly class="form-control" />
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="form-group col-5">
+    <a asp-action="Edit" asp-route-id="@Model.ProductTypeId" class="btn btn-primary">To Update</a>
+    <a asp-action="Index" class="btn btn-success">Back To List</a>
+</div>
+
+
+

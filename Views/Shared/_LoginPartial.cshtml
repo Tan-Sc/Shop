@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@*@inject SignInManager<IdentityUser> SignInManager
+    @inject UserManager<IdentityUser> UserManager*@
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "HomePages", new { area = "Customer" })" method="post" id="logoutForm" class="navbar-right">
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item" style="padding-right:20px;">
+            <p asp-area="Identity" asp-page="/Account/Manage/Index" class="nav-link abc" title="Manage">
+                @await Component.InvokeAsync("UserName")
+                        <a asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index" class="test111">Lịch sử mua hàng</a>
+
+                    </p>
+        </li>
+
+
+        <li class="nav-item">
+            <button type="submit" class="btn btn-link navbar-btn navbar-link nav-link">Logout</button>
+        </li>
+    </ul>
+</form> }
+else
+{
+<ul class="nav navbar-nav navbar-collapse justify-content-end navbar-right">
+
+    @*<li class="nav-item"><a asp-area="Identity" class="nav-link icon-user" asp-page="/Account/Register">&nbsp; REGISTER</a></li>*@
+
+    <li class="nav-item"><a asp-area="Identity" class="nav-link icon-user" asp-page="/Account/Login">&nbsp; LOGIN</a></li>
+</ul>}
+<style>
+    .test111 {
+        position: absolute;
+        top: 40px;
+        right: 152px;
+        background: #f2f0f0;
+        border: 1px solid #000;
+        visibility: hidden; 
+        padding: 0px 8px;
+        border-radius: 10px;
+        color: #000;
+    }
+    .abc:hover .test111 {
+        background: #777;
+        visibility:visible;
+    }
+</style>

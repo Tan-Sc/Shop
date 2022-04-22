@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<doan_webfix.Models.ProductType>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Thể Loại</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp;New Type</a>
+    </div>
+</div>
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.ProductTypeId</td>
+                <td>@item.ProductTypeName</td>
+                <td>
+                   <partial name="_TableButtonPartial" model="@item.ProductTypeId" />
+                    @*<partial name="/~/Views/Shared/_TableButtonPartial" model="@item.ProductTypeId" />*@
+                  
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+
+

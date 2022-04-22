@@ -1,0 +1,29 @@
+﻿@model doan_webfix.Models.ViewModel.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "AppointmentConfirmation";
+    Layout = "~/Areas/Customer/Views/Shared/_LayoutHomePage.cshtml";
+}
+<br />
+<br />
+<div class=" row">
+    <div class="col-4">
+        <form>
+            <partial name="_AppointmentCustomerDetails" model="@Model.Appoinments" />
+        </form>
+    </div>
+    <div class="col-8">
+        <form>
+            <partial name="_AppointmentProductDetails" model="@Model.cartItems" />
+        </form>
+    </div>
+</div>
+<a class=" btn btn-primary btn-sm btn-block" asp-action="Index" asp-controller="Shop" asp-area="Customer">Back To Shop</a>
+
+<style>
+
+    btn btn-primary btn-sm btn-block {
+
+        width: 30px
+    }
+
+</style>

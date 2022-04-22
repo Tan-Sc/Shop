@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210107140939_AddtoB.cs" />
+    <Compile Remove="Migrations\20210107140939_AddtoB.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+ 
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
+ 
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+ 
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.10" />
+ 
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
+ 
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
+ 
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\AdminUsers\CustomerIndex.cshtml" />
+    <None Include="Areas\Admin\Views\AdminUsers\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\AdminUsers\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\AdminUsers\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Appointments\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\Appointments\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Appointments\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Appointments\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Areas\Admin\Views\ProductType\Create.cshtml" />
+    <None Include="Areas\Admin\Views\ProductType\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\ProductType\Details.cshtml" />
+    <None Include="Areas\Admin\Views\ProductType\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\ProductType\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\Product\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Product\updatePrice.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_productDetails.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <None Include="Views\Shared\Components\UserName\Default.cshtml" />
+    <None Include="wwwroot\assets\circle-plus.svg" />
+    <None Include="wwwroot\assets\email.svg" />
+  </ItemGroup>
+
+</Project>

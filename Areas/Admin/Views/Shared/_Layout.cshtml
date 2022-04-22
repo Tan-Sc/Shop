@@ -1,0 +1,206 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title>Admin Dasboard </title>
+
+    <!-- Bootstrap -->
+    <link href="~/js/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/js/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/js/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/js/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="~/js/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="~/js/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/js/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <!-- Custom Theme Style -->
+    <link href="~/css/build/css/custom.min.css" rel="stylesheet">
+    <script>(function (e, t, n) { var r = e.querySelectorAll("html")[0]; r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2") })(document, window, 0);</script>
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>HUTECH</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/images/img.jpg" alt="~/Areas/admin/content." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                         <h2>@await Component.InvokeAsync("UserName")</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a asp-action="Index" asp-controller="HomePages" asp-area="Customer"><i class="fa fa-home"></i> Home <span class=""></span></a>
+
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-edit"></i> Quản lý <span class="fa fa-chevron-down"></span></a>
+                                   <ul class="nav child_menu">
+                                      
+                                        <li><a asp-action="Index" asp-controller="Product" asp-area="Admin">Quản Lý Sản Phẩm</a></li>
+                                       
+                                        <li><a asp-action="CustomerIndex" asp-controller="AdminUsers" asp-area="Admin">Quản Lý Khách Hàng</a></li>
+
+                                        <li><a asp-action="Index" asp-controller="Appointments" asp-area="Admin">Quản Lý Hóa Đơn</a></li>
+
+                                        <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="ProductType" asp-action="Index">Thể Loại</a></li>
+
+
+                                    </ul>
+                                </li>
+
+                                @*<li>
+                                    <a><i class="fa fa-bar-chart-o"></i>Báo cáo <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="fixed_sidebar.html">Báo cáo doanh thu</a></li>
+                                        <li><a href="fixed_footer.html">Báo cáo bán hàng</a></li>
+                                    </ul>
+                                </li>*@
+                                <li>
+                                    <a><i class="fa fa-user"></i>Account <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">ChangeInfo </a></li>
+                                        <li><a asp-action="Index" asp-controller="HomePages" asp-area="Customer">Quit</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="#">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+
+
+            <div class="top_nav clearfix ">
+                <div class="nav_menu" style="margin-bottom:0px">
+
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col " role="main">
+
+
+                @RenderBody()
+
+            </div>
+
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    doan_cn <a href="https://www.facebook.com/Welcome.Is2u/"></a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/js/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/js/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/js/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="~/js/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="~/js/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/js/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/js/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="~/js/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="~/js/vendors/Flot/jquery.flot.js"></script>
+    <script src="~/js/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="~/js/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="~/js/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="~/js/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="~/js/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="~/js/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="~/js/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="~/js/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="~/js/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/js/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/js/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/js/vendors/moment/min/moment.min.js"></script>
+    <script src="~/js/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="~/css/build/js/custom.min.js"></script>
+    @RenderSection("Scripts", required: false){ }
+</body>
+</html>

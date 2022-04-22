@@ -1,0 +1,83 @@
+﻿@model List<doan_webfix.Models.Appoinments>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Count > 0)
+{
+    <h1>Ban co @Model.Count Đơn hàng mới</h1>
+    <br /><br />
+    <div>
+        <table class="table table-striped border">
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().SalePerson.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().AppoinmentDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().AppointmentTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().CustomerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().CustomerPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().CustomerEmail)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().TotalAppointment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FirstOrDefault().isConfirmed)
+                </th>
+                <th>
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.SalePerson.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.AppoinmentDate)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.AppointmentTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.CustomerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.CustomerPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.CustomerEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.TotalAppointment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.isConfirmed)
+                    </td>
+                </tr>
+
+            }
+        </table>
+    </div>
+
+}
+else
+{
+    <h1>Không có đơn hàng mới</h1>
+}

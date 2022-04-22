@@ -1,0 +1,59 @@
+﻿@model doan_webfix.Models.ViewModel.ProductViewPage
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">--Product List--</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp;New Product</a>
+    </div>
+</div>
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Sale Price</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Size</th>
+            <th>Category</th>
+            <th>isNew</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    <img src="@item.Image" alt="Image" style="width:200px;height:200px;" />
+                </td>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@String.Format("{0:c}", item.Price)</td>
+                <td>@String.Format("{0:c}", item.newPrice)</td>
+                <td>@item.amount</td>
+                <td>@item.Mota</td>
+                <td>@item.ProductSize</td>
+                <td>@item.ProductTypes.ProductTypeName</td>
+                <td> @Html.DisplayFor(m => item.isNew)</td>
+                @*<partial name="_TableButtonPartial" model="@item.ProductId" />*@
+            <partial name="~/Views/Shared/_TableButtonPartial.cshtml" model="@item.ProductId" />
+            </tr>
+        }
+    </table>
+</div>
+
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn border" page-class-normal="btn btn-default active"
+     page-class-selected="btn btn-primary active" class="btn-group m-1" style="padding-left:50%;"></div>
+
+
+
+

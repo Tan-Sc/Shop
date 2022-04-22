@@ -1,0 +1,39 @@
+﻿@model doan_webfix.Models.ProductType
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Create Product Type</h2>
+    </div>
+</div>
+<form method="post" asp-action="Create">
+    <div class="p-4 border rounded row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="ProductTypeName">TypeName</label>
+            </div>
+            <div class="col-8">
+                <input asp-for="ProductTypeName" class="form-control" />
+            </div>
+            <span asp-validation-for="ProductTypeName" class="text-danger"></span>
+        </div>
+    </div>
+    <br /> <br />
+    <div class="form-group col-5">
+        <input type="submit" class="btn btn-primary" value="Create" />
+        <a asp-action="Index" class="btn btn-success">Back To List</a>
+    </div>
+
+</form>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

@@ -1,0 +1,82 @@
+﻿@model doan_webfix.Models.ViewModel.ProductViewPage
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<form method="post">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="product-name">
+                    <label asp-for="@Model.Products.FirstOrDefault().ProductId">ID</label>
+                </th>
+                <th class="product-name">
+                    <label asp-for="@Model.Products.FirstOrDefault().ProductName ">Name</label>
+                </th>
+                <th>
+                    <label asp-for="@Model.Products.FirstOrDefault().Price">Price</label>
+                </th>
+                <th>
+                    <label asp-for="@Model.Products.FirstOrDefault().newPrice ">Sale Price</label>
+                </th>
+                <th>
+                    <label asp-for="@Model.Products.FirstOrDefault().amount ">Amount</label>
+                </th>
+                <th class="product-name">
+                    <label asp-for="@Model.Products.FirstOrDefault().ProductSize ">Size</label>
+                </th>
+                <th class="product-price">
+                    <label asp-for="@Model.Products.FirstOrDefault().ProductTypes.ProductTypeName">TypeName</label>
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+            <tr>
+                <td>
+                    <img src="@product.Image" alt="Image" style="width:200px; height:auto">
+                </td>
+                <td class="">
+                    <h5>@product.ProductId</h5>
+                </td>
+                <td class="">
+                    <h6>@product.ProductName</h6>
+                </td>
+                <td style="width:100px;">
+                    <input asp-for="@product.Price" type="text" class="form-control" />
+                </td>
+
+
+                <td style="width:100px;">
+                    <input asp-for="@product.newPrice" type="text" class="form-control" />
+                </td>
+                <td class="">
+                    <h6>@product.amount</h6>
+                </td>
+                <td class="">
+                    <h6>@product.ProductSize</h6>
+                </td>
+
+                <td><h6>@product.ProductTypes.ProductTypeName</h6> </td>
+                <td>
+                    <partial name="_TableButtonPartial" model="product.ProductId" />
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

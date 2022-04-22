@@ -1,0 +1,111 @@
+﻿
+@model doan_webfix.Models.ViewModel.AppointmentDetailsViewModel
+@using doan_webfix.Extensions
+@using doan_webfix.Utility
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Details Appointment</h2>
+
+<form>
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="Appointment.Id" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-5">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Appointment.CustomerName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Appointment.CustomerName" class="form-control" readonly />
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Appointment.CustomerEmail"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Appointment.CustomerEmail" class="form-control" readonly />
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="@Model.Appointment.AppoinmentDate"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="@Model.Appointment.AppoinmentDate" value="@String.Format("{0:d}",Model.Appointment.AppoinmentDate)" type="text" class="form-control" readonly />
+                </div>
+                <span asp-validation-for="@Model.Appointment.AppoinmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="@Model.Appointment.AppointmentTime"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="@Model.Appointment.AppointmentTime" value="@string.Format("{0:t}",Model.Appointment.AppointmentTime)" type="text" class="form-control" readonly />
+                </div>
+                <span asp-validation-for="@Model.Appointment.AppointmentTime" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Appointment.CustomerPhone"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Appointment.CustomerPhone" class="form-control" readonly />
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Appointment.SalePerson"></label>
+                </div>
+                <div class="col-8">
+                    @if (User.IsInRole(SD.AdminEndUser))
+                    {
+                        <input asp-for="@Model.Appointment.SalePerson.Name" readonly class="form-control" />
+                        <input asp-for="@Model.Appointment.SalePersonId" hidden />
+
+                    }
+                    else
+                    {
+                        <input asp-for="@Model.Appointment.SalePerson.Name" class="form-control" readonly />
+
+                    }
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Appointment.isConfirmed"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Appointment.isConfirmed" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Appointment.status"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Appointment.status" class="form-control" readonly />
+                </div>
+            </div>
+
+        </div>
+        <div class="col-7">
+            <partial name="~/Areas/Admin/Views/Shared/_productDetails.cshtml" model="Model.Products" />
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Update" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>

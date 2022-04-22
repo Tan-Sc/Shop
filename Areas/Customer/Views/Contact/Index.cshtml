@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+<br />
+<br />
+<br />
+    <section id="contact">
+
+        <div class="contact-section">
+            <div class="container">
+                <form method="post">
+                    <div class="col-md-6 form-line">
+                        <div class="form-group">
+                            <label for="exampleInputUsername">Your name</label>
+                            <input  type="text" class="form-control" placeholder=" Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail">Email Address</label>
+                            <input  type="email" class="form-control" placeholder=" Enter Email id">
+                        </div>
+
+                       
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="description"> Message</label>
+                            <textarea  class="form-control" placeholder="Enter Your Message"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success"><i class="fas fa-mail-reply"></i>  Send Message</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+

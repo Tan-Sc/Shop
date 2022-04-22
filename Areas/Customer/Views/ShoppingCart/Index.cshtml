@@ -1,0 +1,218 @@
+﻿@model doan_webfix.Models.ViewModel.ShoppingCartViewModel
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_LayoutHomePage.cshtml"; }
+
+
+<br />
+<br />
+@section Slider{
+    <div class="site-blocks-cover" data-aos="fade">
+        <div class="site-blocks-cover" data-aos="fade">
+            <div class="order-1 align-self-end">
+                <img src="~/images/do-an-vat-trung-quoc-hot222.jpg" alt="Image" class="img-fluid">
+            </div>
+
+        </div>
+    </div>
+
+}
+@if (Model.cartItems.Count > 0)
+{
+<div class="container " style="padding:15px;">
+    <form class="col-md-12" method="post">
+        <div class="row">
+            <div class="col-8" style="border-right:1px solid #bbb9b9;">
+                <div class="site-section">
+                    <div class="container">
+                        <div class="row mb-5">
+
+                            <div class="site-blocks-table" style="width:auto">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-thumbnail">
+
+                                            </th>
+                                            <th class="product-name">
+                                                <label asp-for="@Model.cartItems.FirstOrDefault().itemCart.ProductName ">Name</label>
+                                            </th>
+                                            <th class="product-price">
+                                                <label asp-for="@Model.cartItems.FirstOrDefault().itemCart.Price">Price</label>
+                                            </th>
+                                            <th class="product-quantity">
+                                                <label asp-for="@Model.cartItems.FirstOrDefault().quantity ">Quantity</label>
+                                            </th>
+                                            <th class="product-name">
+                                                <label asp-for="@Model.cartItems.FirstOrDefault().itemCart.ProductSize ">Size</label>
+                                            </th>
+                                            <th class="product-price">
+                                                <label asp-for="@Model.cartItems.FirstOrDefault().totalItem" type="number" >Total</label>
+                                            </th>
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var product in Model.cartItems)
+                                        {
+                        <tr>
+                            <td class="product-thumbnail">
+                                <img src="@product.itemCart.Image" alt="Image" class="img-fluid">
+                            </td>
+                            <td class="product-name">
+                                <h6>@product.itemCart.ProductName</h6>
+                            </td>
+                            @if (product.itemCart.newPrice != 0)
+                            {
+                             <td><h5>$@product.itemCart.newPrice</h5></td> }
+                            else
+                            {
+                             <td><h5>$@product.itemCart.Price</h5></td>}
+
+                            <td>
+                                <input asp-for="@product.quantity" type="number" class="form-control" />
+                            </td>
+                            <td class="product-name">
+                                <h5>@product.itemCart.ProductSize</h5>
+                            </td>
+
+                            <td><input asp-for="@product.totalItem" type="number" class="form-control" /></td>
+
+
+                            <td><button type="submit" asp-action="Remove" asp-controller="Shop" asp-area="Customer" asp-route-id="@product.itemCart.ProductId" class="btn btn-primary height-auto btn-sm">X</button></td>
+                        </tr>}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="text-black h4" for="coupon">Coupon</label>
+                                        <p>Enter your coupon code if you have one.</p>
+                                    </div>
+                                    <div class="col-md-8 mb-3 mb-md-0">
+                                        <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary btn-sm px-4">Apply Coupon</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-5">
+                                <div class="row justify-content-end">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-12 text-right border-bottom mb-5">
+                                                <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-5">
+                                            <div class="col-md-6">
+                                                <span class="text-black">Total</span>
+                                            </div>
+                                            <div class="col-md-6 text-right">
+
+                                                <input asp-for="@Model.TotalApointment" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button class="btn btn-primary btn-lg btn-block">Proceed To Checkout</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-4" style="padding-left:30px;">
+                <div class="row">
+                    <div class="col-12">
+                        <label>Name : </label>
+                    </div>
+                    <div class="col-12">
+                        <input asp-for="@Model.Appoinments.CustomerName" class="form-control" value="@Model.customer.Name" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label>Address : </label>
+                    </div>
+                    <div class="col-12">
+                        <input asp-for="@Model.Appoinments.CustomerAddress" class="form-control" value="@Model.customer.Address" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label>Email : </label>
+                    </div>
+                    <div class="col-12">
+                        <input asp-for="@Model.Appoinments.CustomerEmail" class="form-control" value="@Model.customer.Email" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label>Phone : </label>
+                    </div>
+                    <div class="col-12">
+                        <input asp-for="@Model.Appoinments.CustomerPhone" class="form-control" value="@Model.customer.PhoneNumber" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label>Appoinment Date : </label>
+                    </div>
+                    <div class="col-12">
+                        <input asp-for="@Model.Appoinments.AppoinmentDate" value="@String.Format("{0:d}",DateTime.Now)" type="text" class="form-control" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label>Appoinment Time : </label>
+                    </div>
+                    <div class="col-12">
+                        <input asp-for="@Model.Appoinments.AppointmentTime" value="@string.Format("{0:t}",DateTime.Now)" type="text" class="form-control" />
+                    </div>
+
+                </div>
+                <br />
+                <br />
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <button type="submit" id="btnPlaceOrder" asp-action="Index" asp-controller="ShoppingCart" asp-area="Customer" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+                    </div>
+                    <div class="col-md-6">
+                        <a asp-action="Index" asp-controller="Shop" asp-area="Customer" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div> }
+            else
+            {
+<h2 style="text-align:center; color:red;background-color:white">No Product You Want</h2>}
+
+
+
+@section Scripts{
+}

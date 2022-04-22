@@ -1,0 +1,40 @@
+﻿@model doan_webfix.Models.ProductType
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<form method="post" asp-action="Delete">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Delete Product Type</h2>
+        </div>
+    </div>
+    <div class="p-4 border rounded row">
+        <input type="hidden" asp-for="ProductTypeId" class="form-control" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="ProductTypeName">Thể Loại</label>
+            </div>
+            <div class="col-8">
+                <input asp-for="ProductTypeName" readonly class="form-control" />
+            </div>
+            <span asp-validation-for="ProductTypeName" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group col-5">
+        <input type="submit" asp-route-id="@Model.ProductTypeId" class="btn btn-danger" value="Delete" />
+        <a asp-action="Index" class="btn btn-success">Back To List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

@@ -1,0 +1,101 @@
+﻿@model doan_webfix.Models.ViewModel.ProductViewPage
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_LayoutHomePage.cshtml";
+}
+
+<br />
+@section Slider{
+    <div class="site-blocks-cover" data-aos="fade">
+        <div class="site-blocks-cover" data-aos="fade">
+            <div class="order-1 align-self-end">
+                <img src="~/images/do-an-vat-trung-quoc-hot222.jpg" alt="Image" class="img-fluid">
+            </div>
+
+        </div>
+    </div>
+
+}
+
+
+<form method="get">
+    <div class="container">
+        <div class="row">
+            <div class="col-7 row">
+                <div class="col-1"></div>
+                <a href=" @Url.Action("Index","Shop",new { searchName="",searchType=""})" class="mtext-101 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">All Products</a>
+
+                <a href=" @Url.Action("Index","Shop",new { searchName="",searchType="Set đồ ăn"})" class="mtext-101 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Set đồ ăn</a>
+
+                <a href=" @Url.Action("Index","Shop",new { searchName="",searchType="Các Loại Thịt"})" class="mtext-101 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Các Loại Thịt</a>
+
+                <a href=" @Url.Action("Index","Shop",new { searchName="",searchType="Trái Cây"})" class="mtext-101 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Trái Cây</a>
+
+                <a href=" @Url.Action("Index","Shop",new { searchName="",searchType="Đồ Đống Hộp"})" class="mtext-101 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Đồ Đống Hộp</a>
+
+                <a href=" @Url.Action("Index","Shop",new { searchName="",searchType="Tea & Coffee"})" class="mtext-101 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Tea & Coffee</a>
+            </div>
+            <div class="col-3">
+                @Html.Editor("searchName", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="col-2"><button type="submit" value="Search" class="btn btn-primary form-control"><i>Search</i></button></div>
+        </div>
+    </div>
+
+</form>
+
+<div class="row isotope-grid" style="margin-left:50px;margin-right:50px;">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+            <!-- Block2 -->
+            <div class="block2">
+
+                <div class="block2-pic hov-img0">
+                    <a asp-action="Details" asp-controller="Shop" asp-area="Customer" asp-route-id="@product.ProductId">
+                        <img src="@product.Image" alt="IMG-PRODUCT" class="picture">
+                    </a>
+                </div>
+                <div class="block2-txt flex-w flex-t p-t-14">
+                    <div class="block2-txt-child1 flex-col-l ">
+                        <a href="#" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" style="font-size:20px;">
+                            @product.ProductName
+                        </a>
+                        @if (product.newPrice != 0)
+                        {
+                            <span class="stext-105 cl3" style="font-weight:normal;color:dimgray;font-size:20px;">
+                                <del style="padding-right:100px;">@string.Format("{0:c}", product.Price)</del><strong>@string.Format("{0:c}", product.newPrice)</strong>
+
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="stext-105 cl3" style="font-weight:bold;color:black;font-size:20px; text-align:right;">
+                                @string.Format("{0:c}", product.Price)
+                            </span>
+                        }
+
+                        <div class="star-rating">
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                            <span class="icon-star2 text-warning"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn border" page-class-normal="btn btn-default active"
+     page-class-selected="btn btn-primary active" class="btn-group m-1" style="padding-left:50%;"></div>
+
+<!-- Product -->
+<style>
+    img.picture {
+        width: 250px;
+        height: 250px;
+    }
+</style>

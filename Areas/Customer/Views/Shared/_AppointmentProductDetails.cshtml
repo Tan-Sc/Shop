@@ -1,0 +1,78 @@
+﻿@model List<doan_webfix.Models.ViewModel.CartItem>
+
+
+<br/><br /><br /><br />
+<h2>YOUR ORDER WERE SUBMIT - THANK YOU !!!</h2>
+<br />
+@if (Model.Count() > 0)
+{
+    <div class="container rounded" style=" padding :15px;">
+        <div class=" row">
+            <div class=" col-12">
+                <table class="table-striped border" style=" width:100%;">
+                    <thead>
+                        <tr class="table-info">
+                            <th style="text-align:center; width:20%"></th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.FirstOrDefault().itemCart.ProductName "disabled>Name</label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.FirstOrDefault().itemCart.Price "disabled>Price</label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.FirstOrDefault().quantity "disabled>Quantity</label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.FirstOrDefault().itemCart.ProductSize "disabled>Size</label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.FirstOrDefault().totalItem "disabled>Total</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                        <tr style="padding :50px;">
+                            <td style="text-align:center;">
+
+                                <img src="@product.itemCart.Image" width="100%" style="margin :auto; display: block ; border-radius:5px; border:1px solid #bbb9b9; " />
+
+                            </td>
+                            <td style="text-align:center;">
+                                <h5 class="h5 text-black">@product.itemCart.ProductName</h5>
+                            </td>
+
+                            <td style="text-align:center;">
+                                @if (product.itemCart.newPrice != 0)
+                                {
+                                    @string.Format("{0:c}", product.itemCart.newPrice)
+                                }
+                                else
+                                {
+                                    @string.Format("{0:c}", product.itemCart.Price)
+                                }
+                            </td>
+                            <td style="text-align:center;">
+                                <h5 class="h5 text-black">@product.quantity</h5>
+                            </td>
+
+                            <td style="text-align:center;">
+                                <h5 class="h5 text-black">@product.itemCart.ProductSize</h5>
+                            </td>
+
+                            <td style="text-align:center;">
+                                <h5 class="h5 text-black">@product.totalItem</h5>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+}
+
